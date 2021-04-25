@@ -67,14 +67,42 @@
               自定2.add_image(自定j,'单元格位置')
 
 设置字体:自定=openpyxxl.styles.Font(namd=u'字体名称'(中文时须加u在前),size=大小,bold(是否加粗)=True/False,italic(是否倾斜)=True/False,strick(是否显示删除线)=True/False,color='十六								进制',underline(下划线)='None'(默认)/single(单下划线)/double(双下划线)/singleAccounting(会计用单下划线)/doubleAccounting(会计用双下划线),vertAlign(上下标)='None'(默								认)/superscript(上标)/subscript(下标)
-				自定2['单元格位置'].font=自定
+													         				自定2['单元格位置'].font=自定
                 
 设置字体对齐：自定=openpyxl.styles.Alignment(horizontal='general(常规)'/justify(两端对齐)/right(靠右)/left(靠左)/center(居中)/centerContinuous(跨列居中)/distributed(分散对  												齐)/fill(填充),vertical='center(垂直居中)'/bottom(靠下)/justify(两端对齐)/distributed(分散对齐),text_rotation=指定文本旋转角度,wrap_text(是否自动换																行)=True/False，shrink_to_fit(是否缩小字体填充),indent:指定缩进）
-							自定2['单元格位置'].alignment=自定
+             							自定2['单元格位置'].alignment=自定
+
+制作柱状图：
+				        新建一个柱状图：
+           自定j=openpy.chart.Barchart()
+        设定数据的范围：
+           自定p=openpyxl.chart.Reference(自定2，min_row,max_row,min_col,max_col)
+        向柱状图中添加数据:
+           自定j.add_data(自定p,titles_from_data=True/False(如果自定p中的min_row等包括x轴显示的则为True,否则为False))
+        设置x轴显示:
+           自定k=openpyyxl.chart.Reference(自定2，min_row,max_row,min_col,max_col(四个因x轴需要而来选择定))
+        向柱状图中添加X轴:
+           自定j.set_categories(自定k)
+        设置柱状图长/高:自定j.height=,自定j.width=，
+        导入到表格:自定2.add_chart(自定j,'单元格位置')
 
 
+制作折线图：
+		        新建一个折线图：
+           自定j=openpy.chart.Linechart()
+        设定数据的范围：
+           自定p=openpyxl.chart.Reference(自定2，min_row,max_row,min_col,max_col)
+        向柱状图中添加数据:
+           自定j.add_data(自定p,titles_from_data=True/False(如果自定p中的min_row等包括x轴显示的则为True,否则为False),from_rows=True)
+        设置x轴显示:
+           自定k=openpyyxl.chart.Reference(自定2，min_row,max_row,min_col,max_col(四个因x轴需要而来选择定))
+        向柱状图中添加X轴:
+           自定j.set_categories(自定k)
+        设置柱状图长/高:自定j.height=,自定j.width=，
+        导入到表格:自定2.add_chart(自定j,'单元格位置')
 
-
+数字转字母:openpyxl.utils.get_column_letter(数字)
+字母转数字:openpyxl.utils.column_index_from_string('字母')
 
 
 
